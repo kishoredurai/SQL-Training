@@ -88,3 +88,51 @@ declare @studentname nchar(30);
 exec FetchStudentBasedonAdressid 2,@studentname output;
 print(@studentname);
 
+
+
+select * from Student;
+select * from Department;
+select * from Address;
+
+-- call from another procedure
+
+create or alter procedure insertdataIntoStudent @id int, @name nchar(30),@dept nchar(30),@email nchar(30),@addid int
+as
+insert into student values (@id,@name,@dept,@email,@addid);
+
+
+create or alter procedure callInsertProcedure @id int,@name nchar(30),@dept nchar(30)
+as
+declare @email nchar(30),@addid int
+set @email= 'kumar@gmail.com'
+set @addid = 2
+exec insertdataIntoStudent @id,@name,@dept,@email,@addid;
+
+exec callInsertProcedure 7,'kishore','Computer Science';
+
+
+-- statement with try catch block
+
+
+create or alter procedure fetchstudentinfo
+as
+begin try
+update student set StudId = 2 where StudId =3
+end try
+begin catch
+declare @errorMessage varchar(255);
+set @errorMessage = 'Duplicate data';
+print(@errorMessage);
+end catch
+
+exec fetchstudentinfo;
+
+
+
+-- without try catch block
+create or alter procedure fetchstudentinfo
+as
+update student set StudId = 2 where StudId =3
+
+
+exec fetchstudentinfo;
