@@ -5,6 +5,12 @@ select * from Department;
 EXEC FetchStudentDetails;
 
 
+
+create or alter procedure fetchstudentdetails @id int As
+select * from student where StudId=@id;
+
+exec fetchstudentdetails 9;
+
 /*
 create procedure FetchCustomerDetails as
 select * from Customers;
@@ -56,11 +62,11 @@ insert into Student values(@studentname , @studentDept)
 exec studentinfo 'kishore' , 'Computer Science';
 
 
-/*
-create procedure deletewithIdfromStudent @id int
+
+create or alter procedure deletewithIdfromStudent @stid int
 as
-delete from Student where StudId = @id;
-*/
+delete from Student where StudId = @stid;
+
 
 /*
 exec deletewithIdfromStudent 1;
@@ -136,3 +142,6 @@ update student set StudId = 2 where StudId =3
 
 
 exec fetchstudentinfo;
+
+
+create or alter 
