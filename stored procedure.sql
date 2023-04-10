@@ -1,6 +1,7 @@
 CREATE PROCEDURE FetchStudentDetails
 AS 
 select * from Student;
+select * from address;
 select * from Department;
 EXEC FetchStudentDetails;
 

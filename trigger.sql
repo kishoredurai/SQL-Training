@@ -16,7 +16,7 @@ AS
 insert into log values ((select COUNT(*) from log)+1 ,CURRENT_TIMESTAMP,NEWID() );
 
 
-insert into student values (12,'tharun','Computer Science','tharun@gmail.com',4)
+insert into student values (14,'tharun','Computer Science','tharun@gmail.com',4) SCOPE_IDENTITY();
 
 
 ALTER TABLE student
@@ -28,3 +28,6 @@ alter column StudId INT  AUTO_INCREMENT PRIMARY KEY;
 
 
 
+SELECT *
+FROM student 
+where studentid = 3;

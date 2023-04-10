@@ -1,4 +1,4 @@
-select * from student where StudAdd = 2;
+select * from student ;
 select * from Address;
 select * from Department;
 
@@ -22,7 +22,8 @@ return select * from Student where StudAdd = @Addid;
 
 select * from FetchStudentDetail1(2);
 
-
+CREATE INDEX studentid
+ON student (StudId);
 
 
 
